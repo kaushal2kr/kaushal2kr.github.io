@@ -1,1 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Cisco Switch LED Indicator Guide | Kaushal Logs</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .navbar {
+      background: #020617;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, #1e40af, transparent 30%),
+                  linear-gradient(135deg, #020617, #0f172a, #1e293b);
+      color: white;
+      padding: 75px 8%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #7dd3fc;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      font-size: 17px;
+      margin-bottom: 16px;
+      max-width: 780px;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 9px;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    .btn-secondary {
+      border: 1px solid #94a3b8;
+      color: white;
+      background: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 26px;
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .quick-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .quick-item {
+      background: rgba(2, 6, 23, 0.45);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 14px;
+      padding: 14px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .quick-item strong {
+      color: #ffffff;
+    }
+
+    section {
+      padding: 60px 8%;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: 34px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: #64748b;
+      max-width: 900px;
+    }
+
+    .lab-shell {
+      background: #020617;
+      border-radius: 24px;
+      padding: 28px;
+      color: white;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+      overflow: hidden;
+    }
+
+    .lab-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .lab-title h3 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .lab-title p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .mode-buttons,
+    .scenario-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .mode-btn,
+    .scenario-btn {
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #cbd5e1;
+      border-radius: 9px;
+      padding: 10px 13px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .mode-btn:hover,
+    .scenario-btn:hover {
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    .mode-btn.active {
+      background: #0ea5e9;
+      color: #020617;
+      border-color: #38bdf8;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+    }
+
+    .switch-wrap {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .switch-chassis {
+      min-width: 900px;
+      background: linear-gradient(180deg, #30343b, #171a20 50%, #111318);
+      border: 1px solid #111827;
+      border-radius: 14px;
+      padding: 18px 22px 20px;
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.08),
+        inset 0 -3px 0 rgba(0,0,0,0.35),
+        0 18px 45px rgba(0,0,0,0.55);
+      position: relative;
+    }
+
+    .switch-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      margin-bottom: 14px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      color: #38bdf8;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(56,189,248,0.35);
+    }
+
+    .switch-main {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .sys-panel {
+      background: rgba(0,0,0,0.38);
+      border: 1px solid rgba(148,163,184,0.16);
+      border-radius: 10px;
+      padding: 13px;
+    }
+
+    .sys-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .sys-item {
+      text-align: center;
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .sys-led,
+    .port-led {
+      width: 12px;
+      height: 12px;
+      margin: 0 auto 6px;
+      border-radius: 50%;
+      background: #334155;
+      border: 1px solid #475569;
+    }
+
+    .sys-led.green,
+    .port-led.green {
+      background: #22c55e;
+      box-shadow: 0 0 12px #22c55e, 0 0 24px rgba(34,197,94,0.45);
+      border-color: #86efac;
+    }
+
+    .sys-led.amber,
+    .port-led.amber {
+      background: #f59e0b;
+      box-shadow: 0 0 12px #f59e0b, 0 0 24px rgba(245,158,11,0.45);
+      border-color: #fcd34d;
+    }
+
+    .sys-led.red,
+    .port-led.red {
+      background: #ef4444;
+      box-shadow: 0 0 12px #ef4444, 0 0 24px rgba(239,68,68,0.45);
+      border-color: #fca5a5;
+    }
+
+    .port-led.blink {
+      background: #22c55e;
+      border-color: #86efac;
+      animation: blink 0.75s steps(1) infinite;
+    }
+
+    .port-led.off,
+    .sys-led.off {
+      background: #172033;
+      border-color: #334155;
+      box-shadow: none;
+    }
+
+    @keyframes blink {
+      0%, 49% {
+        opacity: 1;
+        box-shadow: 0 0 12px #22c55e, 0 0 24px rgba(34,197,94,0.45);
+      }
+      50%, 100% {
+        opacity: 0.2;
+        box-shadow: none;
+      }
+    }
+
+    .ports-area {
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(148,163,184,0.14);
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .ports-row {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 7px;
+    }
+
+    .port-unit {
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .rj45 {
+      height: 28px;
+      background: linear-gradient(180deg, #090b10, #020617);
+      border: 1px solid #475569;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    .rj45::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      right: 4px;
+      height: 12px;
+      background:
+        repeating-linear-gradient(90deg, #475569 0 2px, #020617 2px 4px);
+      opacity: 0.55;
+      border-radius: 2px;
+    }
+
+    .rj45::after {
+      content: "";
+      position: absolute;
+      bottom: 3px;
+      left: 34%;
+      right: 34%;
+      height: 5px;
+      border: 1px solid #334155;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .port-number {
+      color: #64748b;
+      font-size: 10px;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    .port-unit:hover .tooltip {
+      display: block;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #020617;
+      color: #e2e8f0;
+      border: 1px solid #38bdf8;
+      border-radius: 8px;
+      padding: 8px 10px;
+      width: 210px;
+      z-index: 20;
+      text-align: left;
+      font-size: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+
+    .special-ports {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(148,163,184,0.15);
+    }
+
+    .sfp {
+      width: 54px;
+      text-align: center;
+      color: #64748b;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .sfp-box {
+      height: 28px;
+      background: linear-gradient(180deg, #272b34, #111827);
+      border: 1px solid #475569;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sfp-slot {
+      width: 34px;
+      height: 12px;
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 2px;
+    }
+
+    .info-panel {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 20px;
+    }
+
+    .mode-explain,
+    .scenario-explain {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .mode-explain h3,
+    .scenario-explain h3 {
+      color: #38bdf8;
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .mode-explain p,
+    .scenario-explain p {
+      color: #cbd5e1;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .legend-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .legend-table td {
+      border-top: 1px solid #334155;
+      padding: 10px 6px;
+      color: #cbd5e1;
+      vertical-align: top;
+    }
+
+    .legend-table td:first-child {
+      color: #94a3b8;
+      width: 180px;
+      font-weight: 700;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+
+    .dot.green { background: #22c55e; box-shadow: 0 0 9px #22c55e; }
+    .dot.amber { background: #f59e0b; box-shadow: 0 0 9px #f59e0b; }
+    .dot.red { background: #ef4444; box-shadow: 0 0 9px #ef4444; }
+    .dot.off { background: #334155; border: 1px solid #64748b; }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .content-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+    }
+
+    .content-card h3 {
+      color: #0f172a;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .content-card p,
+    .content-card li {
+      color: #475569;
+      font-size: 15px;
+    }
+
+    .content-card ul,
+    .content-card ol {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .answer-box {
+      background: #0f172a;
+      color: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.2);
+    }
+
+    .answer-box h3 {
+      color: #38bdf8;
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+
+    .answer-box p {
+      color: #cbd5e1;
+      margin-bottom: 13px;
+    }
+
+    .note {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 22px;
+      font-size: 15px;
+    }
+
+    .path-box {
+      background: white;
+      border: 1px dashed #94a3b8;
+      border-radius: 16px;
+      padding: 18px;
+      color: #334155;
+      font-family: Consolas, monospace;
+      margin-top: 18px;
+      overflow-x: auto;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      text-align: center;
+      padding: 24px;
+    }
+
+    @media (max-width: 950px) {
+      .hero,
+      .info-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .switch-main {
+        grid-template-columns: 1fr;
+      }
+
+      .sys-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero,
+      section {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      .hero h1 {
+        font-size: 33px;
+      }
+
+      .sys-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Kaushal Logs</div>
+
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="#lab">Live Demo</a></li>
+      <li><a href="#explanation">Explanation</a></li>
+      <li><a href="#interview">Interview Answer</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="tag">CCNA Networking Visual Lab</span>
+
+      <h1>Cisco Switch <span>LED Indicator</span> Guide</h1>
+
+      <p>
+        This project explains how switch LEDs help a network engineer quickly check
+        physical link status, traffic activity, speed, duplex, PoE condition, and basic port problems.
+      </p>
+
+      <p>
+        The goal is not only to memorize colors. The goal is to understand what the
+        switch is trying to tell us before we start deeper troubleshooting with CLI commands.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#lab" class="btn btn-primary">Open Interactive Demo</a>
+        <a href="#interview" class="btn btn-secondary">Read Interview Answer</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h2>What this page teaches</h2>
+
+      <div class="quick-list">
+        <div class="quick-item"><strong>Green:</strong> port has a valid link or normal condition depending on selected mode.</div>
+        <div class="quick-item"><strong>Blinking green:</strong> port is active and frames are moving through the interface.</div>
+        <div class="quick-item"><strong>Amber:</strong> warning condition, different speed/duplex state, blocked port, or PoE issue depending on mode.</div>
+        <div class="quick-item"><strong>Off:</strong> no active link, device off, cable unplugged, or port disabled depending on context.</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="lab">
+    <div class="section-heading">
+      <h2>Interactive Switch LED Lab</h2>
+      <p>
+        Use the mode buttons to understand how the same physical port LEDs can show different information.
+        On real Cisco Catalyst switches, the MODE button changes what the port LEDs represent.
+      </p>
+    </div>
+
+    <div class="lab-shell">
+      <div class="lab-header">
+        <div class="lab-title">
+          <h3>Catalyst-Style 24-Port Switch Panel</h3>
+          <p>Hover over ports for quick meaning. Click a port to simulate activity blink.</p>
+        </div>
+
+        <div class="mode-buttons">
+          <button class="mode-btn active" data-mode="stat">STAT</button>
+          <button class="mode-btn" data-mode="duplex">DUPLX</button>
+          <button class="mode-btn" data-mode="speed">SPEED</button>
+          <button class="mode-btn" data-mode="poe">PoE</button>
+        </div>
+      </div>
+
+      <div class="switch-wrap">
+        <div class="switch-chassis">
+          <div class="switch-top">
+            <span class="brand">CISCO</span>
+            <span>Catalyst 2960-X Style · Educational Demo</span>
+          </div>
+
+          <div class="switch-main">
+            <div class="sys-panel">
+              <div class="sys-grid" id="systemLeds"></div>
+            </div>
+
+            <div class="ports-area">
+              <div class="ports-row" id="portsRow"></div>
+
+              <div class="special-ports">
+                <div class="sfp">
+                  <div class="port-led green"></div>
+                  <div class="sfp-box"><div class="sfp-slot"></div></div>
+                  G1
+                </div>
+                <div class="sfp">
+                  <div class="port-led blink"></div>
+                  <div class="sfp-box"><div class="sfp-slot"></div></div>
+                  G2
+                </div>
+                <div class="sfp">
+                  <div class="port-led off"></div>
+                  <div class="sfp-box"><div class="sfp-slot"></div></div>
+                  G3
+                </div>
+                <div class="sfp">
+                  <div class="port-led off"></div>
+                  <div class="sfp-box"><div class="sfp-slot"></div></div>
+                  G4
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div class="mode-explain">
+          <h3 id="modeTitle">STAT Mode</h3>
+          <p id="modeBody"></p>
+
+          <table class="legend-table" id="modeTable"></table>
+        </div>
+
+        <div class="scenario-explain">
+          <h3>Scenario Simulator</h3>
+          <p>
+            These buttons simulate common troubleshooting situations. They are not exact hardware readings,
+            but they help you understand how LED observations connect with real network problems.
+          </p>
+
+          <div class="scenario-buttons">
+            <button class="scenario-btn" data-scenario="normal">Normal Link</button>
+            <button class="scenario-btn" data-scenario="activity">Heavy Traffic</button>
+            <button class="scenario-btn" data-scenario="duplexissue">Duplex Issue</button>
+            <button class="scenario-btn" data-scenario="blocked">STP / Blocked</button>
+            <button class="scenario-btn" data-scenario="poefault">PoE Fault</button>
+            <button class="scenario-btn" data-scenario="nolink">No Link</button>
+          </div>
+
+          <p id="scenarioText" style="margin-top: 16px;">
+            Select a scenario to see how a network engineer would read the LEDs during basic troubleshooting.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Important:</strong> LED meanings can vary by Cisco switch model, software version, and selected LED mode.
+      Always verify with the exact hardware guide. This page is designed as a CCNA-level learning visual, not a replacement for official documentation.
+    </div>
+  </section>
+
+  <section id="explanation">
+    <div class="section-heading">
+      <h2>Professional Explanation</h2>
+      <p>
+        A switch LED is a quick visual signal. It does not show the full packet, but it gives the first clue about the port condition.
+      </p>
+    </div>
+
+    <div class="content-grid">
+      <div class="content-card">
+        <h3>1. Link Detection</h3>
+        <p>
+          When a cable is connected between a switch and a device, the physical layer checks electrical or optical signal.
+          If the link is detected correctly, the port LED usually turns on.
+        </p>
+        <ul>
+          <li>No light usually means no active physical link.</li>
+          <li>Possible causes: unplugged cable, powered-off device, bad port, bad cable, or disabled interface.</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h3>2. Activity Indication</h3>
+        <p>
+          When frames are entering or leaving the interface, the LED may blink. This tells us that traffic is moving,
+          but it does not prove the traffic is good or secure.
+        </p>
+        <ul>
+          <li>Blinking can mean normal user traffic.</li>
+          <li>Heavy blinking can happen during file transfer, broadcast traffic, or scanning activity.</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h3>3. Speed and Duplex</h3>
+        <p>
+          In speed or duplex mode, the same port LEDs can represent negotiated speed or duplex state.
+          This is useful when checking slow connections or performance issues.
+        </p>
+        <ul>
+          <li>Speed mismatch can reduce performance.</li>
+          <li>Half-duplex can cause collisions and poor throughput in legacy environments.</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h3>4. PoE Condition</h3>
+        <p>
+          On PoE switches, LEDs can help identify whether power is being delivered to devices like IP phones,
+          cameras, or wireless access points.
+        </p>
+        <ul>
+          <li>PoE fault can happen due to power budget, cable issue, or unsupported powered device.</li>
+          <li>Always confirm using CLI commands after checking LEDs.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="interview">
+    <div class="section-heading">
+      <h2>Interview-Ready Answer</h2>
+      <p>
+        Use this answer when an interviewer asks: “What do switch port LEDs indicate?” or “How do you troubleshoot using switch lights?”
+      </p>
+    </div>
+
+    <div class="answer-box">
+      <h3>Standard Answer</h3>
+
+      <p>
+        Switch LEDs are used for quick first-level troubleshooting. They help us identify whether the switch is powered on,
+        whether a port has an active link, whether traffic is passing, and whether there may be a speed, duplex, PoE, or port-state issue.
+      </p>
+
+      <p>
+        First, I check the system LED to confirm the switch is healthy. Then I check the port LED.
+        If the port has no light, I verify the cable, connected device, interface shutdown state, and physical port.
+        If the LED is green, the link is usually up. If it is blinking, traffic is passing through the interface.
+        If the LED is amber, I do not assume only one reason; I check the selected LED mode and then verify using CLI commands.
+      </p>
+
+      <p>
+        After checking the LEDs, I confirm with commands like <strong>show interfaces status</strong>,
+        <strong>show interfaces</strong>, <strong>show running-config interface</strong>,
+        <strong>show spanning-tree interface</strong>, and if it is a PoE port,
+        <strong>show power inline</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section id="troubleshooting">
+    <div class="section-heading">
+      <h2>Troubleshooting Flow</h2>
+      <p>
+        This is the practical sequence to follow before jumping to complex configuration checks.
+      </p>
+    </div>
+
+    <div class="content-grid">
+      <div class="content-card">
+        <h3>No Light on Port</h3>
+        <ol>
+          <li>Check if cable is inserted properly.</li>
+          <li>Check if connected device is powered on.</li>
+          <li>Try another cable and another switch port.</li>
+          <li>Check if the interface is administratively shutdown.</li>
+          <li>Use <strong>show interfaces status</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="content-card">
+        <h3>Green or Blinking Green</h3>
+        <ol>
+          <li>Link is likely active.</li>
+          <li>Blinking means traffic is moving.</li>
+          <li>Verify speed, duplex, VLAN, and IP configuration if connectivity still fails.</li>
+          <li>Use <strong>show mac address-table</strong> and <strong>show interfaces</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="content-card">
+        <h3>Amber or Warning State</h3>
+        <ol>
+          <li>Check which LED mode is selected.</li>
+          <li>Check spanning-tree blocking or err-disabled state.</li>
+          <li>Check speed/duplex mismatch.</li>
+          <li>Check PoE power issue if the device needs power.</li>
+          <li>Use <strong>show interfaces status err-disabled</strong> and <strong>show spanning-tree</strong>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="path-box">
+      Suggested GitHub Pages path:<br />
+      projects/cisco-switch-light/index.html
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Kaushal Kumar | Kaushal Logs | Cisco Switch LED Indicator Visual Lab</p>
+  </footer>
+
+  <script>
+    const modeData = {
+      stat: {
+        title: "STAT Mode — Link and Activity",
+        body: "STAT is the normal view for port LEDs. It helps identify whether a port has a live connection and whether traffic is moving.",
+        system: { SYST: "green", RPS: "off", STAT: "green", DUPLX: "off", SPEED: "off", PoE: "off" },
+        ports: ["green","blink","amber","off","green","blink","green","off","green","amber","green","blink","green","green","off","blink","green","amber","green","off","green","blink","green","green"],
+        table: [
+          ["Green", "Link is up. Device is connected and the port is active."],
+          ["Blinking green", "Frames are moving through the port."],
+          ["Amber", "Possible blocked, disabled, fault, or warning state depending on model and mode."],
+          ["Off", "No active link, device off, cable issue, or port disabled."]
+        ]
+      },
+      duplex: {
+        title: "DUPLX Mode — Duplex State",
+        body: "DUPLX mode is used to check full-duplex or half-duplex condition. Duplex mismatch can cause slow network and collisions.",
+        system: { SYST: "green", RPS: "off", STAT: "off", DUPLX: "green", SPEED: "off", PoE: "off" },
+        ports: ["green","green","green","off","green","amber","green","off","green","green","amber","green","green","green","off","green","green","amber","green","off","green","green","green","green"],
+        table: [
+          ["Green", "Full-duplex or normal duplex condition in this learning view."],
+          ["Amber", "Half-duplex or duplex condition that should be investigated."],
+          ["Off", "Port is not connected or not active."]
+        ]
+      },
+      speed: {
+        title: "SPEED Mode — Negotiated Speed",
+        body: "SPEED mode helps verify whether ports negotiated at expected speeds. This is useful when a connection is unexpectedly slow.",
+        system: { SYST: "green", RPS: "off", STAT: "off", DUPLX: "off", SPEED: "green", PoE: "off" },
+        ports: ["green","green","amber","amber","green","green","green","off","green","amber","green","green","green","green","off","green","amber","green","green","off","green","green","amber","green"],
+        table: [
+          ["Green", "High-speed/gigabit link in this learning view."],
+          ["Amber", "Lower negotiated speed such as 10/100 Mbps in this learning view."],
+          ["Off", "No active link."]
+        ]
+      },
+      poe: {
+        title: "PoE Mode — Power over Ethernet",
+        body: "PoE mode helps check whether the switch is delivering power to devices such as IP phones, cameras, or wireless access points.",
+        system: { SYST: "green", RPS: "off", STAT: "off", DUPLX: "off", SPEED: "off", PoE: "green" },
+        ports: ["green","green","off","amber","green","red","green","off","green","amber","green","off","green","green","red","amber","green","off","green","green","off","green","red","green"],
+        table: [
+          ["Green", "PoE is being delivered normally in this learning view."],
+          ["Amber", "Power denied or warning condition."],
+          ["Red", "PoE fault condition in this learning view."],
+          ["Off", "No PoE device detected or PoE is not required."]
+        ]
+      }
+    };
+
+    const scenarios = {
+      normal: "Normal Link: the port has a valid Layer 1 connection. After this, verify VLAN, IP address, gateway, and MAC learning if communication still fails.",
+      activity: "Heavy Traffic: blinking indicates frame activity. This can be normal traffic, file transfer, broadcast traffic, or sometimes scanning. LEDs alone do not prove whether traffic is safe.",
+      duplexissue: "Duplex Issue: the link may be up, but performance can be poor due to duplex mismatch. Check show interfaces for collisions, late collisions, and negotiated duplex.",
+      blocked: "STP / Blocked: a port can have a physical link but may not forward frames because Spanning Tree is blocking it to prevent loops.",
+      poefault: "PoE Fault: a powered device may not receive power because of cable issue, power budget, unsupported device, or PoE negotiation problem.",
+      nolink: "No Link: check cable, NIC, connected device power, interface shutdown state, and try another port or cable."
+    };
+
+    let currentMode = "stat";
+
+    function ledClass(color) {
+      if (color === "green") return "green";
+      if (color === "amber") return "amber";
+      if (color === "red") return "red";
+      if (color === "blink") return "blink";
+      return "off";
+    }
+
+    function renderSystemLeds(mode) {
+      const holder = document.getElementById("systemLeds");
+      const order = ["SYST", "RPS", "STAT", "DUPLX", "SPEED", "PoE"];
+      const data = modeData[mode].system;
+
+      holder.innerHTML = order.map(name => `
+        <div class="sys-item">
+          <div class="sys-led ${ledClass(data[name])}"></div>
+          ${name}
+        </div>
+      `).join("");
+    }
+
+    function portMeaning(state, mode) {
+      if (mode === "stat") {
+        if (state === "green") return "Link up. Device connected.";
+        if (state === "blink") return "Activity. Frames are passing.";
+        if (state === "amber") return "Warning/blocked/fault state. Verify with CLI.";
+        return "No link or disabled port.";
+      }
+
+      if (mode === "duplex") {
+        if (state === "green") return "Full duplex in this learning view.";
+        if (state === "amber") return "Half duplex or mismatch to investigate.";
+        return "No active port.";
+      }
+
+      if (mode === "speed") {
+        if (state === "green") return "High-speed/gigabit link in this learning view.";
+        if (state === "amber") return "Lower speed such as 10/100 Mbps in this learning view.";
+        return "No active link.";
+      }
+
+      if (mode === "poe") {
+        if (state === "green") return "PoE supplied normally.";
+        if (state === "amber") return "PoE denied or warning.";
+        if (state === "red") return "PoE fault condition.";
+        return "No PoE device or no power required.";
+      }
+
+      return "Port state.";
+    }
+
+    function renderPorts(mode) {
+      const row = document.getElementById("portsRow");
+      const data = modeData[mode].ports;
+
+      row.innerHTML = data.map((state, index) => `
+        <div class="port-unit" onclick="flashPort(${index + 1})">
+          <div class="port-led ${ledClass(state)}" id="p${index + 1}"></div>
+          <div class="rj45"></div>
+          <div class="port-number">${index + 1}</div>
+          <div class="tooltip">
+            <strong>Port ${index + 1}</strong><br />
+            ${portMeaning(state, mode)}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderModeInfo(mode) {
+      const data = modeData[mode];
+      document.getElementById("modeTitle").textContent = data.title;
+      document.getElementById("modeBody").textContent = data.body;
+
+      document.getElementById("modeTable").innerHTML = data.table.map(row => {
+        const color = row[0].toLowerCase().includes("green") ? "green" :
+                      row[0].toLowerCase().includes("amber") ? "amber" :
+                      row[0].toLowerCase().includes("red") ? "red" : "off";
+
+        return `
+          <tr>
+            <td><span class="dot ${color}"></span>${row[0]}</td>
+            <td>${row[1]}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll(".mode-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.mode === mode);
+      });
+      renderSystemLeds(mode);
+      renderPorts(mode);
+      renderModeInfo(mode);
+    }
+
+    function flashPort(num) {
+      const led = document.getElementById("p" + num);
+      if (!led) return;
+      const oldClass = led.className;
+      led.className = "port-led blink";
+      setTimeout(() => led.className = oldClass, 1600);
+    }
+
+    function applyScenario(scenario) {
+      document.getElementById("scenarioText").textContent = scenarios[scenario];
+
+      if (scenario === "activity") setMode("stat");
+      if (scenario === "duplexissue") setMode("duplex");
+      if (scenario === "poefault") setMode("poe");
+      if (scenario === "normal") setMode("stat");
+      if (scenario === "blocked") setMode("stat");
+      if (scenario === "nolink") setMode("stat");
+
+      setTimeout(() => {
+        if (scenario === "activity") {
+          [2,6,12,16,22].forEach(flashPort);
+        }
+
+        if (scenario === "blocked") {
+          const led = document.getElementById("p3");
+          if (led) led.className = "port-led amber";
+        }
+
+        if (scenario === "nolink") {
+          [4,8,15,20].forEach(num => {
+            const led = document.getElementById("p" + num);
+            if (led) led.className = "port-led off";
+          });
+        }
+      }, 100);
+    }
+
+    document.querySelectorAll(".mode-btn").forEach(btn => {
+      btn.addEventListener("click", () => setMode(btn.dataset.mode));
+    });
+
+    document.querySelectorAll(".scenario-btn").forEach(btn => {
+      btn.addEventListener("click", () => applyScenario(btn.dataset.scenario));
+    });
+
+    setMode("stat");
+  </script>
+</body>
+</html>
