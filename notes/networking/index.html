@@ -1,1 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Technical Notes | Kaushal Logs</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .navbar {
+      background: #020617;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+      color: white;
+      padding: 80px 8%;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #7dd3fc;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: auto;
+      color: #cbd5e1;
+      font-size: 17px;
+    }
+
+    section {
+      padding: 60px 8%;
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-size: 34px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: #64748b;
+      max-width: 850px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #38bdf8;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      color: #0f172a;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .card ul {
+      margin-left: 18px;
+      color: #475569;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card li {
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 8px 13px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    .disabled {
+      background: #f1f5f9;
+      color: #64748b;
+      cursor: not-allowed;
+    }
+
+    .note-box {
+      background: #0f172a;
+      color: white;
+      padding: 32px;
+      border-radius: 20px;
+      margin-top: 40px;
+    }
+
+    .note-box h3 {
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+
+    .note-box p {
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      text-align: center;
+      padding: 24px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      section {
+        padding: 45px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Kaushal Logs</div>
+
+    <ul class="nav-links">
+      <li><a href="../">Home</a></li>
+      <li><a href="../#projects">Projects</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <span class="tag">Technical Notes Library</span>
+
+    <h1>Networking, Cybersecurity & IT Notes</h1>
+
+    <p>
+      This notes section is my organized learning library. I use it to explain
+      technical concepts in a simple, practical, and interview-ready way with
+      examples, troubleshooting points, and project connections.
+    </p>
+  </header>
+
+  <section>
+    <div class="section-heading">
+      <h2>Notes Categories</h2>
+      <p>
+        Start with networking fundamentals first, because networking is the base
+        for cybersecurity, SOC analysis, IT support, cloud, and packet analysis.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+  <div class="icon">📘</div>
+  <h3>CCNA + NOC Interview Notes</h3>
+  <p>
+    Complete networking foundation notes covering packet, frame, header,
+    encapsulation, OSI model, TCP/IP model, IP vs MAC, DHCP, DNS, ARP,
+    website flow, NAT, TCP, TLS, troubleshooting, and interview answers.
+  </p>
+  <a href="ccna-noc-interview-notes.html" class="btn">Open Full Notes →</a>
+</div>
+
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>CCNA & Networking Notes</h3>
+        <p>
+          Core networking concepts explained with practical examples and interview-focused clarity.
+        </p>
+
+        <ul>
+          <li>Cisco switch LED indicators</li>
+          <li>OSI model and TCP/IP model</li>
+          <li>ARP, DNS, DHCP, VLAN</li>
+          <li>Subnetting, routing, switching</li>
+          <li>TCP, UDP, ports, NAT</li>
+        </ul>
+
+        <a href="networking/" class="btn">Open Networking Notes →</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔍</div>
+        <h3>Packet Analysis Notes</h3>
+        <p>
+          Notes focused on Wireshark, packet structure, headers, and real traffic flow.
+        </p>
+
+        <ul>
+          <li>Ethernet frame</li>
+          <li>IP header</li>
+          <li>TCP three-way handshake</li>
+          <li>DNS and ARP packets</li>
+          <li>HTTP/HTTPS flow</li>
+        </ul>
+
+        <span class="btn disabled">Coming Soon</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛡️</div>
+        <h3>Cybersecurity & SOC Notes</h3>
+        <p>
+          Beginner-friendly SOC and cybersecurity notes connected with networking fundamentals.
+        </p>
+
+        <ul>
+          <li>CIA triad</li>
+          <li>Threats and vulnerabilities</li>
+          <li>SIEM and log analysis</li>
+          <li>False positives and IOC</li>
+          <li>Incident response basics</li>
+        </ul>
+
+        <span class="btn disabled">Coming Soon</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>IT Support Notes</h3>
+        <p>
+          Practical support notes for troubleshooting systems, users, devices, and networks.
+        </p>
+
+        <ul>
+          <li>Hardware and software basics</li>
+          <li>Windows troubleshooting</li>
+          <li>Linux basics</li>
+          <li>Printer and network issues</li>
+          <li>Helpdesk scenarios</li>
+        </ul>
+
+        <span class="btn disabled">Coming Soon</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">☁️</div>
+        <h3>Cloud Fundamentals</h3>
+        <p>
+          Basic cloud concepts useful for IT support, SOC, networking, and cloud beginner roles.
+        </p>
+
+        <ul>
+          <li>IaaS, PaaS, SaaS</li>
+          <li>Virtual machines</li>
+          <li>Cloud storage</li>
+          <li>IAM basics</li>
+          <li>Shared responsibility model</li>
+        </ul>
+
+        <span class="btn disabled">Coming Soon</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Interview Preparation</h3>
+        <p>
+          Straightforward interview answers for fresher networking, cybersecurity, SOC, and IT roles.
+        </p>
+
+        <ul>
+          <li>Networking interview answers</li>
+          <li>SOC analyst answers</li>
+          <li>IT support answers</li>
+          <li>Troubleshooting scenarios</li>
+          <li>Project explanations</li>
+        </ul>
+
+        <span class="btn disabled">Coming Soon</span>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      <h3>Current Focus</h3>
+      <p>
+        My first notes track is CCNA & Networking because it builds the foundation
+        for packet analysis, cybersecurity, SOC monitoring, IT support, and cloud networking.
+      </p>
+
+      <p>
+        The first detailed note will be: <strong>Cisco Switch LED Indicators</strong>,
+        connected with my interactive switch LED project.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Kaushal Kumar | Technical Notes Library | Kaushal Logs</p>
+  </footer>
+
+</body>
+</html>
