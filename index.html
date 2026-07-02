@@ -139,12 +139,24 @@
       transform: translateY(-2px);
     }
 
+    .visual-link {
+      display: block;
+      color: inherit;
+    }
+
     .visual-card {
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 28px;
       border-radius: 24px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .visual-link:hover .visual-card {
+      transform: translateY(-6px);
+      border-color: #38bdf8;
     }
 
     .visual-card h3 {
@@ -224,6 +236,10 @@
       border-radius: 14px;
       color: #cbd5e1;
       font-size: 14px;
+    }
+
+    .mini-note strong {
+      color: #38bdf8;
     }
 
     section {
@@ -322,7 +338,7 @@
       margin-bottom: 16px;
     }
 
-    .card .status {
+    .status {
       display: inline-block;
       background: #e0f2fe;
       color: #0369a1;
@@ -330,6 +346,12 @@
       border-radius: 20px;
       font-size: 13px;
       font-weight: bold;
+      transition: 0.2s;
+    }
+
+    a.status:hover {
+      background: #38bdf8;
+      color: #020617;
     }
 
     .dark-section {
@@ -481,43 +503,47 @@
       </div>
     </div>
 
-    <div class="visual-card">
-      <h3>Featured Visual Concept</h3>
+    <a href="projects/cisco-switch-light/" class="visual-link" aria-label="Open Cisco Switch Port LED Simulator">
+      <div class="visual-card">
+        <h3>Featured Visual Concept</h3>
 
-      <div class="switch">
-        <div class="switch-top">
-          <span>Cisco Switch</span>
-          <span>Port LED Status</span>
+        <div class="switch">
+          <div class="switch-top">
+            <span>Cisco Switch</span>
+            <span>Port LED Status</span>
+          </div>
+
+          <div class="ports">
+            <div class="port">
+              <div class="led green"></div>
+              Port 1<br />Link Up
+            </div>
+
+            <div class="port">
+              <div class="led blink"></div>
+              Port 2<br />Traffic
+            </div>
+
+            <div class="port">
+              <div class="led amber"></div>
+              Port 3<br />Issue
+            </div>
+
+            <div class="port">
+              <div class="led off"></div>
+              Port 4<br />No Link
+            </div>
+          </div>
         </div>
 
-        <div class="ports">
-          <div class="port">
-            <div class="led green"></div>
-            Port 1<br />Link Up
-          </div>
-
-          <div class="port">
-            <div class="led blink"></div>
-            Port 2<br />Traffic
-          </div>
-
-          <div class="port">
-            <div class="led amber"></div>
-            Port 3<br />Issue
-          </div>
-
-          <div class="port">
-            <div class="led off"></div>
-            Port 4<br />No Link
-          </div>
+        <div class="mini-note">
+          Green means link is active, blinking means traffic is passing, amber may
+          indicate an issue, and no light usually means no active connection.
+          <br /><br />
+          <strong>Click to open full interactive switch LED project →</strong>
         </div>
       </div>
-
-      <div class="mini-note">
-        Green means link is active, blinking means traffic is passing, amber may
-        indicate an issue, and no light usually means no active connection.
-      </div>
-    </div>
+    </a>
   </header>
 
   <section id="about">
@@ -653,9 +679,9 @@
         <h3>Cisco Switch Port LED Simulator</h3>
         <p>
           A visual project explaining green light, blinking light, amber light,
-          and no-light conditions on Cisco switch ports.
+          no-light condition, STAT mode, duplex mode, speed mode, and PoE mode.
         </p>
-        <span class="status">Next Project</span>
+        <a href="projects/cisco-switch-light/" class="status">Open Project →</a>
       </div>
 
       <div class="card">
