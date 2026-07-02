@@ -1,1 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>CCNA + NOC Interview Notes | Kaushal Logs</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .navbar {
+      background: #020617;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, #1e40af, transparent 30%),
+                  linear-gradient(135deg, #020617, #0f172a, #1e293b);
+      color: white;
+      padding: 80px 8%;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #7dd3fc;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 980px;
+      color: #cbd5e1;
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+
+    .hero-buttons {
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 9px 14px;
+      border-radius: 22px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    .hero .btn {
+      background: #38bdf8;
+      color: #020617;
+      margin-right: 10px;
+    }
+
+    .hero .btn.secondary {
+      background: transparent;
+      border: 1px solid #94a3b8;
+      color: white;
+    }
+
+    section {
+      padding: 55px 8%;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: 32px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: #64748b;
+      max-width: 980px;
+    }
+
+    .content-box {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 28px;
+    }
+
+    .content-box h3 {
+      color: #0f172a;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .content-box p {
+      color: #475569;
+      margin-bottom: 14px;
+    }
+
+    .content-box ul,
+    .content-box ol {
+      margin-left: 22px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .content-box li {
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 26px;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .card h3 {
+      color: #0f172a;
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .icon {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 28px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th {
+      background: #0f172a;
+      color: white;
+      padding: 14px;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #475569;
+      vertical-align: top;
+      font-size: 15px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight {
+      background: #e0f2fe;
+      color: #075985;
+      padding: 3px 7px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .code {
+      background: #020617;
+      color: #dbeafe;
+      padding: 16px;
+      border-radius: 12px;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      margin: 14px 0;
+      line-height: 1.6;
+    }
+
+    .dark-section {
+      background: #0f172a;
+      color: white;
+    }
+
+    .dark-section .section-heading h2 {
+      color: white;
+    }
+
+    .dark-section .section-heading p {
+      color: #cbd5e1;
+    }
+
+    .dark-card {
+      background: #1e293b;
+      border-left: 5px solid #38bdf8;
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .dark-card h3 {
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    .dark-card p {
+      color: #cbd5e1;
+    }
+
+    .flow {
+      display: grid;
+      gap: 14px;
+    }
+
+    .flow-step {
+      background: white;
+      padding: 22px;
+      border-radius: 16px;
+      border-left: 5px solid #38bdf8;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+    }
+
+    .flow-step h3 {
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .flow-step p {
+      color: #64748b;
+    }
+
+    .answer-box {
+      background: #020617;
+      color: white;
+      padding: 34px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.18);
+    }
+
+    .answer-box h3 {
+      color: #38bdf8;
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+
+    .answer-box p {
+      color: #cbd5e1;
+      margin-bottom: 14px;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      text-align: center;
+      padding: 24px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      section {
+        padding: 45px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Kaushal Logs</div>
+
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../">All Notes</a></li>
+      <li><a href="./">Networking Notes</a></li>
+      <li><a href="../../projects/cisco-switch-light/">Switch Project</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <span class="tag">CCNA + NOC Interview Notes</span>
+
+    <h1>Networking Fundamentals for NOC, IT Support & Cybersecurity Interviews</h1>
+
+    <p>
+      These notes explain the core networking concepts needed for CCNA basics,
+      NOC roles, IT support, SOC analysis, cybersecurity fundamentals, and packet analysis.
+    </p>
+
+    <p>
+      The goal is not only to memorize definitions. The goal is to understand how devices
+      communicate, how packets move, how headers are added, and how to troubleshoot issues
+      step by step.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="./" class="btn">Back to Networking Notes</a>
+      <a href="#interview-answer" class="btn secondary">Interview Answer</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-heading">
+      <h2>Best Study Order</h2>
+      <p>
+        Start from the basic building blocks. Do not jump directly into routing or cybersecurity
+        without understanding packet, frame, IP, MAC, ARP, DNS, DHCP, and gateway.
+      </p>
+    </div>
+
+    <div class="content-box">
+      <h3>Recommended Learning Flow</h3>
+
+      <ol>
+        <li>Understand what data, packet, frame, header, encapsulation, and decapsulation mean.</li>
+        <li>Understand OSI model and TCP/IP model from practical troubleshooting point of view.</li>
+        <li>Understand IP address, MAC address, subnet mask, default gateway, and DNS server.</li>
+        <li>Understand DHCP: how a device gets IP automatically.</li>
+        <li>Understand DNS: how website names become IP addresses.</li>
+        <li>Understand ARP: how IP address is mapped to MAC address inside LAN.</li>
+        <li>Understand what happens when you open a website.</li>
+        <li>Understand switch, router, NAT, TCP handshake, TLS, and HTTP/HTTPS.</li>
+        <li>Learn basic troubleshooting commands used by NOC and IT support engineers.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Core Building Blocks</h2>
+      <p>
+        These terms are the base of networking. If these are clear, OSI, TCP/IP,
+        Wireshark, routing, and SOC investigation become easier.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>Data</h3>
+        <p>
+          Data is the original information created by an application. Example:
+          a browser request, chat message, file, image, or video stream.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📨</div>
+        <h3>Packet</h3>
+        <p>
+          A packet is data with Layer 3 information, mainly source IP and destination IP.
+          Routers use packets to forward traffic between networks.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧱</div>
+        <h3>Frame</h3>
+        <p>
+          A frame is data with Layer 2 information, mainly source MAC and destination MAC.
+          Switches use frames inside a LAN.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🏷️</div>
+        <h3>Header</h3>
+        <p>
+          A header is extra control information added before data. Each layer adds its own header
+          so devices can understand how to handle the data.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Encapsulation and Decapsulation</h2>
+      <p>
+        Encapsulation means headers are added while data goes down the network stack.
+        Decapsulation means headers are removed when data reaches the receiver.
+      </p>
+    </div>
+
+    <div class="content-box">
+      <h3>Encapsulation Flow</h3>
+
+      <p>
+        When your laptop sends data, the application creates the data. Then every layer adds
+        its own information.
+      </p>
+
+      <div class="code">
+Application Data<br>
+↓ Transport Layer adds TCP/UDP header = Segment<br>
+↓ Network Layer adds IP header = Packet<br>
+↓ Data Link Layer adds MAC header/trailer = Frame<br>
+↓ Physical Layer sends bits/signals through cable or Wi-Fi
+      </div>
+
+      <h3>Decapsulation Flow</h3>
+
+      <p>
+        On the receiving side, the reverse happens. The receiver removes each header and gives
+        the original data to the application.
+      </p>
+
+      <div class="code">
+Bits/signals received<br>
+↓ Frame is checked at Data Link Layer<br>
+↓ Packet is processed at Network Layer<br>
+↓ Segment is processed at Transport Layer<br>
+↓ Original data reaches the application
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>OSI Model vs TCP/IP Model</h2>
+      <p>
+        OSI is useful for troubleshooting and understanding concepts. TCP/IP is the practical
+        model used on the internet.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>OSI Layer</th>
+            <th>What It Does</th>
+            <th>Examples</th>
+            <th>Troubleshooting View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Layer 7 - Application</td>
+            <td>User-facing network services</td>
+            <td>HTTP, HTTPS, DNS, SMTP</td>
+            <td>Website, app, DNS, login, service issue</td>
+          </tr>
+          <tr>
+            <td>Layer 6 - Presentation</td>
+            <td>Format, encryption, encoding</td>
+            <td>TLS/SSL, compression, encoding</td>
+            <td>Certificate, encryption, format issue</td>
+          </tr>
+          <tr>
+            <td>Layer 5 - Session</td>
+            <td>Session creation and management</td>
+            <td>Login session, connection session</td>
+            <td>Session timeout or broken session</td>
+          </tr>
+          <tr>
+            <td>Layer 4 - Transport</td>
+            <td>End-to-end communication</td>
+            <td>TCP, UDP, port numbers</td>
+            <td>Port blocked, TCP handshake fail, retransmission</td>
+          </tr>
+          <tr>
+            <td>Layer 3 - Network</td>
+            <td>Logical addressing and routing</td>
+            <td>IP address, router, ICMP</td>
+            <td>Wrong IP, gateway issue, routing issue</td>
+          </tr>
+          <tr>
+            <td>Layer 2 - Data Link</td>
+            <td>Local network delivery</td>
+            <td>MAC, switch, VLAN, ARP</td>
+            <td>VLAN issue, MAC learning issue, STP issue</td>
+          </tr>
+          <tr>
+            <td>Layer 1 - Physical</td>
+            <td>Physical signal transmission</td>
+            <td>Cable, port, Wi-Fi signal, LED</td>
+            <td>Cable unplugged, bad port, no link light</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>IP Address, MAC Address, Subnet Mask and Gateway</h2>
+      <p>
+        These four things are very important for real troubleshooting.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>IP Address</h3>
+        <p>
+          IP address is a logical address used to identify a device on a network.
+          Routers use IP addresses to move packets between different networks.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>MAC Address</h3>
+        <p>
+          MAC address is a physical Layer 2 address of a network interface.
+          Switches use MAC addresses to forward frames inside the same LAN.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Subnet Mask</h3>
+        <p>
+          Subnet mask tells which part of the IP address is network and which part is host.
+          It helps the device decide whether destination is local or remote.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Default Gateway</h3>
+        <p>
+          Default gateway is the router IP used when the destination is outside the local network.
+          Without gateway, internet or remote network access will fail.
+        </p>
+      </div>
+    </div>
+
+    <div class="content-box" style="margin-top: 28px;">
+      <h3>Local vs Remote Communication</h3>
+
+      <p>
+        If source and destination are in the same network, the device uses ARP to find the
+        destination MAC address and sends traffic directly inside the LAN.
+      </p>
+
+      <p>
+        If destination is in another network, the device sends the frame to the default gateway
+        MAC address. Then the router forwards the packet toward the remote network.
+      </p>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="section-heading">
+      <h2>DHCP, DNS and ARP</h2>
+      <p>
+        These three protocols are used almost every time a device joins a network and opens a website.
+      </p>
+    </div>
+
+    <div class="dark-card">
+      <h3>DHCP - Dynamic Host Configuration Protocol</h3>
+      <p>
+        DHCP automatically gives IP address, subnet mask, default gateway, DNS server, and lease time
+        to a device. Without DHCP, users may need to configure IP settings manually.
+      </p>
+    </div>
+
+    <div class="dark-card">
+      <h3>DNS - Domain Name System</h3>
+      <p>
+        DNS converts human-readable domain names like google.com into IP addresses.
+        Without DNS, users would need to remember IP addresses instead of names.
+      </p>
+    </div>
+
+    <div class="dark-card">
+      <h3>ARP - Address Resolution Protocol</h3>
+      <p>
+        ARP finds the MAC address for a known IP address inside the same local network.
+        It is required because switches forward frames using MAC addresses.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>DHCP DORA Process</h2>
+      <p>
+        DHCP works through four main steps called DORA.
+      </p>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <h3>Discover</h3>
+        <p>
+          Client broadcasts a message: “Is there any DHCP server available?”
+          This is broadcast because the client does not yet have an IP address.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Offer</h3>
+        <p>
+          DHCP server replies with an available IP address and network settings.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Request</h3>
+        <p>
+          Client requests to use the offered IP address.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Acknowledgement</h3>
+        <p>
+          DHCP server confirms the lease. Now the client can use that IP address.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>DNS Records</h2>
+      <p>
+        DNS has different record types for different purposes.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Record</th>
+            <th>Meaning</th>
+            <th>Example Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td>Maps domain to IPv4 address</td>
+            <td>example.com → 93.184.216.34</td>
+          </tr>
+          <tr>
+            <td>AAAA</td>
+            <td>Maps domain to IPv6 address</td>
+            <td>example.com → IPv6 address</td>
+          </tr>
+          <tr>
+            <td>CNAME</td>
+            <td>Alias for another domain name</td>
+            <td>www.example.com → example.com</td>
+          </tr>
+          <tr>
+            <td>MX</td>
+            <td>Mail exchange server</td>
+            <td>Used for email delivery</td>
+          </tr>
+          <tr>
+            <td>TXT</td>
+            <td>Text-based verification/security info</td>
+            <td>SPF, DKIM, domain verification</td>
+          </tr>
+          <tr>
+            <td>NS</td>
+            <td>Name server record</td>
+            <td>Tells which DNS servers are authoritative</td>
+          </tr>
+          <tr>
+            <td>PTR</td>
+            <td>Reverse DNS lookup</td>
+            <td>IP address → domain name</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>What Happens When We Open a Website?</h2>
+      <p>
+        This is one of the most important interview questions for networking, IT support,
+        NOC, SOC, and cybersecurity roles.
+      </p>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <h3>Step 1: User enters website name</h3>
+        <p>
+          User types a domain name like example.com in the browser.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 2: DNS resolution</h3>
+        <p>
+          Browser/system checks cache first. If IP is not found, it queries DNS server to get
+          the IP address of the website.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 3: ARP for gateway MAC</h3>
+        <p>
+          If the website IP is outside the local network, the device needs the MAC address
+          of the default gateway. It uses ARP to find the gateway MAC.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 4: Frame goes to switch</h3>
+        <p>
+          The device sends an Ethernet frame to the switch. The destination MAC is the gateway MAC.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 5: Router forwards packet</h3>
+        <p>
+          The router removes the Layer 2 frame, reads the destination IP, and forwards the packet
+          toward the internet.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 6: NAT may happen</h3>
+        <p>
+          In home/office networks, private IP is translated into public IP using NAT.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 7: TCP handshake</h3>
+        <p>
+          For HTTPS websites, TCP connection is created using SYN, SYN-ACK, and ACK.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 8: TLS handshake</h3>
+        <p>
+          Browser and server establish encryption so HTTPS traffic stays secure.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 9: HTTP request and response</h3>
+        <p>
+          Browser sends HTTP/HTTPS request. Server sends back HTML, CSS, JavaScript, images,
+          and other resources.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Step 10: Browser renders webpage</h3>
+        <p>
+          Browser processes the received content and displays the webpage to the user.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Switch, Router, NAT, TCP and TLS</h2>
+      <p>
+        These are practical terms you should explain clearly in interviews.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Simple Meaning</th>
+            <th>Practical Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Switch</td>
+            <td>Layer 2 device</td>
+            <td>Forwards frames inside LAN using MAC address table</td>
+          </tr>
+          <tr>
+            <td>Router</td>
+            <td>Layer 3 device</td>
+            <td>Forwards packets between different networks using IP routing</td>
+          </tr>
+          <tr>
+            <td>NAT</td>
+            <td>Network Address Translation</td>
+            <td>Translates private IP to public IP for internet access</td>
+          </tr>
+          <tr>
+            <td>TCP</td>
+            <td>Reliable transport protocol</td>
+            <td>Uses handshake, sequencing, acknowledgement, retransmission</td>
+          </tr>
+          <tr>
+            <td>UDP</td>
+            <td>Fast connectionless protocol</td>
+            <td>Used in DNS, video call, gaming, streaming where speed matters</td>
+          </tr>
+          <tr>
+            <td>TLS</td>
+            <td>Encryption layer for secure communication</td>
+            <td>Used in HTTPS to protect data between browser and server</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="section-heading">
+      <h2>NOC Troubleshooting Mindset</h2>
+      <p>
+        NOC engineers troubleshoot logically. They do not guess randomly.
+      </p>
+    </div>
+
+    <div class="dark-card">
+      <h3>Start from Layer 1</h3>
+      <p>
+        Check power, cable, port LED, Wi-Fi signal, link status, and physical connection.
+      </p>
+    </div>
+
+    <div class="dark-card">
+      <h3>Then check Layer 2</h3>
+      <p>
+        Check MAC address, switch port, VLAN, STP, and local connectivity.
+      </p>
+    </div>
+
+    <div class="dark-card">
+      <h3>Then check Layer 3</h3>
+      <p>
+        Check IP address, subnet mask, gateway, routing, and ping.
+      </p>
+    </div>
+
+    <div class="dark-card">
+      <h3>Then check Layer 4 and Application</h3>
+      <p>
+        Check TCP/UDP ports, firewall, DNS, application service, and server response.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Commands To Remember</h2>
+      <p>
+        These commands are useful for IT support, NOC, networking, and basic SOC troubleshooting.
+      </p>
+    </div>
+
+    <div class="content-box">
+      <h3>Windows Commands</h3>
+
+      <div class="code">
+ipconfig<br>
+ipconfig /all<br>
+ping 8.8.8.8<br>
+ping google.com<br>
+tracert google.com<br>
+nslookup google.com<br>
+arp -a<br>
+netstat -ano
+      </div>
+
+      <h3>Linux Commands</h3>
+
+      <div class="code">
+ip a<br>
+ip route<br>
+ping 8.8.8.8<br>
+traceroute google.com<br>
+dig google.com<br>
+nslookup google.com<br>
+arp -a<br>
+ss -tulnp
+      </div>
+
+      <h3>Cisco Basic Commands</h3>
+
+      <div class="code">
+show ip interface brief<br>
+show interfaces status<br>
+show interfaces<br>
+show vlan brief<br>
+show mac address-table<br>
+show running-config<br>
+show cdp neighbors<br>
+show version
+      </div>
+    </div>
+  </section>
+
+  <section id="interview-answer">
+    <div class="answer-box">
+      <h3>Interview Answer: What Happens When We Open a Website?</h3>
+
+      <p>
+        When we type a website name in the browser, the system first checks whether the IP address
+        is already available in cache. If not, it sends a DNS query to resolve the domain name
+        into an IP address.
+      </p>
+
+      <p>
+        After getting the destination IP, the device checks whether the destination is in the same
+        local network or a remote network. If it is remote, the packet must go to the default gateway.
+        To send the frame to the gateway, the device uses ARP to find the gateway MAC address.
+      </p>
+
+      <p>
+        Then the Ethernet frame goes to the switch. The switch forwards it using the MAC address table.
+        The router receives it, removes the Layer 2 frame, checks the destination IP, and forwards the
+        packet toward the internet. NAT may translate the private IP into a public IP.
+      </p>
+
+      <p>
+        For an HTTPS website, TCP three-way handshake happens first. After that TLS handshake happens
+        to create a secure encrypted session. Then the browser sends the HTTP request and the server
+        replies with webpage content like HTML, CSS, JavaScript, images, and other resources.
+      </p>
+
+      <p>
+        Finally, the browser renders the webpage. From troubleshooting point of view, failure can happen
+        at many points such as DNS failure, ARP/gateway issue, IP issue, routing issue, firewall issue,
+        TCP port issue, TLS certificate issue, or application server issue.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Quick Revision Summary</h2>
+      <p>
+        Use this section for last-minute interview revision.
+      </p>
+    </div>
+
+    <div class="content-box">
+      <ul>
+        <li><strong>Switch:</strong> forwards frames using MAC address.</li>
+        <li><strong>Router:</strong> forwards packets using IP address.</li>
+        <li><strong>ARP:</strong> finds MAC address for an IP inside LAN.</li>
+        <li><strong>DNS:</strong> converts domain name into IP address.</li>
+        <li><strong>DHCP:</strong> automatically assigns IP settings to clients.</li>
+        <li><strong>Packet:</strong> Layer 3 unit with IP header.</li>
+        <li><strong>Frame:</strong> Layer 2 unit with MAC header and trailer.</li>
+        <li><strong>TCP:</strong> reliable, connection-oriented protocol.</li>
+        <li><strong>UDP:</strong> faster, connectionless protocol.</li>
+        <li><strong>NAT:</strong> translates private IP into public IP.</li>
+        <li><strong>Gateway:</strong> router used to reach other networks.</li>
+        <li><strong>Subnet mask:</strong> identifies network and host portion.</li>
+      </ul>
+
+      <a href="./" class="btn">Back to Networking Notes →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Kaushal Kumar | CCNA + NOC Interview Notes | Kaushal Logs</p>
+  </footer>
+
+</body>
+</html>
