@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CCNA + NOC Interview Notes | Kaushal Logs</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .navbar {
+      background: #020617;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+      color: white;
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #7dd3fc;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 900px;
+      margin: auto;
+      color: #cbd5e1;
+      font-size: 17px;
+    }
+
+    section {
+      padding: 60px 8%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+      border-bottom: 3px solid #38bdf8;
+      padding-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: 32px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: #64748b;
+      font-size: 16px;
+    }
+
+    .content-box {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+      margin-bottom: 28px;
+      border-left: 5px solid #38bdf8;
+    }
+
+    .content-box h3 {
+      color: #0f172a;
+      font-size: 24px;
+      margin-bottom: 18px;
+      margin-top: 24px;
+    }
+
+    .content-box h3:first-child {
+      margin-top: 0;
+    }
+
+    .content-box h4 {
+      color: #0284c7;
+      font-size: 18px;
+      margin-top: 20px;
+      margin-bottom: 12px;
+    }
+
+    .content-box p {
+      color: #475569;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    .content-box ul {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      color: #475569;
+    }
+
+    .content-box li {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .content-box strong {
+      color: #0f172a;
+    }
+
+    .highlight {
+      background: #f0f9ff;
+      border-left: 4px solid #38bdf8;
+      padding: 18px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .highlight p {
+      margin: 0;
+      color: #0369a1;
+      font-weight: 500;
+    }
+
+    .diagram {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 13px;
+      margin: 20px 0;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .comparison-box {
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .comparison-box h4 {
+      color: #0284c7;
+      margin-top: 0;
+    }
+
+    .interview-qa {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 18px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .interview-qa strong {
+      color: #92400e;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .interview-qa p {
+      color: #b45309;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      margin: 16px 0;
+    }
+
+    th {
+      background: #0f172a;
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 14px;
+    }
+
+    tr:hover {
+      background: #f8fafc;
+    }
+
+    .tip-box {
+      background: #d1fae5;
+      border-left: 4px solid #10b981;
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .tip-box strong {
+      color: #065f46;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .tip-box p {
+      color: #047857;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      text-align: center;
+      padding: 24px;
+      margin-top: 40px;
+    }
+
+    .toc {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+      margin-bottom: 40px;
+    }
+
+    .toc h3 {
+      color: #0f172a;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li {
+      margin-bottom: 10px;
+    }
+
+    .toc a {
+      color: #38bdf8;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .toc a:hover {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 800px) {
+      .navbar {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      section {
+        padding: 40px 6%;
+      }
+
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Kaushal Logs</div>
+
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../">Notes</a></li>
+      <li><a href="../../#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <span class="tag">Complete Networking Guide</span>
+
+    <h1>CCNA + NOC Interview Notes</h1>
+
+    <p>
+      Everything you need to understand networking from the ground up. This page covers packets,
+      headers, OSI/TCP-IP models, protocols, and interview-ready answers for CCNA and NOC roles.
+    </p>
+  </header>
+
+  <section>
+    <div class="toc">
+      <h3>📖 Quick Navigation</h3>
+      <ul>
+        <li><a href="#packets-frames">🔹 Packets & Frames</a></li>
+        <li><a href="#encapsulation">🔹 Encapsulation</a></li>
+        <li><a href="#osi-model">🔹 OSI Model</a></li>
+        <li><a href="#tcpip-model">🔹 TCP/IP Model</a></li>
+        <li><a href="#ip-addressing">🔹 IP Addressing & MAC</a></li>
+        <li><a href="#protocols">🔹 Key Protocols (DHCP, DNS, ARP)</a></li>
+        <li><a href="#web-flow">🔹 How Websites Work</a></li>
+        <li><a href="#nat">🔹 NAT Explained</a></li>
+        <li><a href="#tcp-udp">🔹 TCP vs UDP</a></li>
+        <li><a href="#tls">🔹 TLS/SSL Security</a></li>
+        <li><a href="#interview">🔹 Interview Answers</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="packets-frames">
+    <div class="section-heading">
+      <h2>🔹 Packets & Frames</h2>
+      <p>Understanding the basic units of data transmission</p>
+    </div>
+
+    <div class="content-box">
+      <h3>What is a Packet?</h3>
+      <p>
+        A <strong>packet</strong> is a unit of data sent over a network. Think of it like a letter in an envelope.
+        Each packet contains:
+      </p>
+      <ul>
+        <li><strong>Header:</strong> Contains source/destination info, routing details, and control info</li>
+        <li><strong>Payload (Data):</strong> The actual message being sent (email, video stream, website content)</li>
+        <li><strong>Trailer/Footer:</strong> Error-checking information</li>
+      </ul>
+
+      <h3>What is a Frame?</h3>
+      <p>
+        A <strong>frame</strong> is a packet at Layer 2 (Data Link Layer). It includes:
+      </p>
+      <ul>
+        <li><strong>Ethernet header:</strong> Source MAC, destination MAC</li>
+        <li><strong>IP header:</strong> Source IP, destination IP (added at Layer 3)</li>
+        <li><strong>Payload:</strong> The actual data</li>
+        <li><strong>Frame Check Sequence (FCS):</strong> Error detection</li>
+      </ul>
+
+      <div class="highlight">
+        <p>💡 <strong>Key Point:</strong> Frame = Layer 2 data unit | Packet = Layer 3 data unit. They mean similar things in conversation but technically differ by layer.</p>
+      </div>
+
+      <h3>Packet Structure Example</h3>
+      <div class="diagram">
+┌─────────────────────────────────────────────────────┐
+│ Ethernet Frame Header (MAC addresses)               │
+├─────────────────────────────────────────────────────┤
+│ IP Header (IP addresses, TTL, protocol)             │
+├─────────────────────────────────────────────────────┤
+│ TCP/UDP Header (ports, sequence, flags)             │
+├─────────────────────────────────────────────────────┤
+│ Application Data (HTTP, email, video, etc.)         │
+├─────────────────────────────────────────────────────┤
+│ Frame Check Sequence (error checking)               │
+└─────────────────────────────────────────────────────┘
+      </div>
+    </div>
+  </section>
+
+  <section id="encapsulation">
+    <div class="section-heading">
+      <h2>🔹 Encapsulation & De-encapsulation</h2>
+      <p>How data moves through network layers</p>
+    </div>
+
+    <div class="content-box">
+      <h3>What is Encapsulation?</h3>
+      <p>
+        <strong>Encapsulation</strong> is the process of wrapping data with headers and trailers
+        as it moves down the OSI model (from Layer 7 to Layer 1). Each layer adds its own header.
+      </p>
+
+      <h3>Encapsulation Process (Sender Side)</h3>
+      <div class="diagram">
+Layer 7 (App):    Email message (1000 bytes)
+          ↓ Add HTTP header
+Layer 6-5:        HTTP Header + Data
+          ↓ Add TCP header
+Layer 4 (Trans):  TCP Header + HTTP Header + Data (Segment)
+          ↓ Add IP header
+Layer 3 (Network):IP Header + TCP Header + Data (Packet)
+          ↓ Add MAC header
+Layer 2 (Link):   MAC Header + IP Header + TCP Header + Data (Frame)
+          ↓ Convert to bits
+Layer 1 (Phys):   11010101010... (Bits sent over wire)
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 Naming at Each Layer:</strong>
+        <p>
+          Layer 4 (Transport): <strong>Segment</strong> | 
+          Layer 3 (Network): <strong>Packet</strong> | 
+          Layer 2 (Link): <strong>Frame</strong> | 
+          Layer 1 (Physical): <strong>Bits</strong>
+        </p>
+      </div>
+
+      <h3>De-encapsulation Process (Receiver Side)</h3>
+      <p>
+        The receiving device reverses this process by removing headers layer by layer:
+      </p>
+      <ul>
+        <li>Layer 1: Receives bits, converts to frame</li>
+        <li>Layer 2: Removes MAC header, reads destination MAC</li>
+        <li>Layer 3: Removes IP header, reads destination IP</li>
+        <li>Layer 4: Removes TCP/UDP header, reads port</li>
+        <li>Layer 5-7: Processes the actual data</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="osi-model">
+    <div class="section-heading">
+      <h2>🔹 OSI Model (7 Layers)</h2>
+      <p>The framework for understanding networking</p>
+    </div>
+
+    <div class="content-box">
+      <div class="table-responsive">
+        <table>
+          <tr>
+            <th>Layer</th>
+            <th>Name</th>
+            <th>Function</th>
+            <th>Examples</th>
+            <th>Data Unit</th>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>Application</strong></td>
+            <td>User services, email, web browsing</td>
+            <td>HTTP, HTTPS, FTP, SMTP, DNS, Telnet</td>
+            <td>Data</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Presentation</strong></td>
+            <td>Data translation, encryption, compression</td>
+            <td>SSL/TLS, JPG, PNG, Encryption</td>
+            <td>Data</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Session</strong></td>
+            <td>Maintain connections, start/stop</td>
+            <td>NetBIOS, PPTP, RPC</td>
+            <td>Data</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Transport</strong></td>
+            <td>Reliable/unreliable delivery, flow control</td>
+            <td>TCP, UDP, SCTP</td>
+            <td>Segment</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Network</strong></td>
+            <td>IP addressing, routing, path selection</td>
+            <td>IP, ICMP, IGMP, Routers</td>
+            <td>Packet</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Data Link</strong></td>
+            <td>MAC addressing, switching, frame delivery</td>
+            <td>Ethernet, PPP, Frame Relay, Switches</td>
+            <td>Frame</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Physical</strong></td>
+            <td>Physical transmission (cables, signals)</td>
+            <td>Cables, Fiber, WiFi, Hubs, Bits</td>
+            <td>Bits</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>OSI Model Mnemonics</h3>
+      <p><strong>Top to Bottom:</strong> All People Seem To Need Data Processing</p>
+      <p><strong>Bottom to Top:</strong> Please Do Not Throw Sausage Pizza Away</p>
+
+      <div class="highlight">
+        <p>💡 <strong>Key Rule:</strong> When data goes down, each layer adds its header. When going up, each layer removes its header.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tcpip-model">
+    <div class="section-heading">
+      <h2>🔹 TCP/IP Model (4 Layers)</h2>
+      <p>The practical modern internet model</p>
+    </div>
+
+    <div class="content-box">
+      <p>
+        The TCP/IP model is a simplified version of OSI used in the real internet. It combines some OSI layers.
+      </p>
+
+      <div class="table-responsive">
+        <table>
+          <tr>
+            <th>TCP/IP Layer</th>
+            <th>OSI Equivalent</th>
+            <th>Function</th>
+            <th>Protocols</th>
+          </tr>
+          <tr>
+            <td><strong>Application</strong></td>
+            <td>5, 6, 7</td>
+            <td>User applications</td>
+            <td>HTTP, HTTPS, FTP, SMTP, DNS, SSH, Telnet</td>
+          </tr>
+          <tr>
+            <td><strong>Transport</strong></td>
+            <td>4</td>
+            <td>End-to-end delivery</td>
+            <td>TCP, UDP, SCTP</td>
+          </tr>
+          <tr>
+            <td><strong>Internet</strong></td>
+            <td>3</td>
+            <td>Routing, IP addressing</td>
+            <td>IP, ICMP, IGMP, IPSec</td>
+          </tr>
+          <tr>
+            <td><strong>Link/Network Access</strong></td>
+            <td>1, 2</td>
+            <td>Physical delivery, MAC addressing</td>
+            <td>Ethernet, PPP, Frame Relay</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 Remember:</strong>
+        <p>
+          TCP/IP is what the internet actually uses. OSI is the reference model that helps us understand how networking works at each layer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ip-addressing">
+    <div class="section-heading">
+      <h2>🔹 IP Addressing vs MAC Addressing</h2>
+      <p>Two different ways devices identify each other</p>
+    </div>
+
+    <div class="content-box">
+      <div class="comparison">
+        <div class="comparison-box">
+          <h4>🔹 IP Address</h4>
+          <ul>
+            <li><strong>Layer:</strong> Layer 3 (Network)</li>
+            <li><strong>Size:</strong> 32 bits (IPv4) or 128 bits (IPv6)</li>
+            <li><strong>Format:</strong> 192.168.1.1 (IPv4)</li>
+            <li><strong>Purpose:</strong> Identify device on INTERNET</li>
+            <li><strong>Routing:</strong> Routers use it to route packets</li>
+            <li><strong>Scope:</strong> Global (works across networks)</li>
+            <li><strong>Assignment:</strong> Static or Dynamic (DHCP)</li>
+          </ul>
+        </div>
+
+        <div class="comparison-box">
+          <h4>🔹 MAC Address</h4>
+          <ul>
+            <li><strong>Layer:</strong> Layer 2 (Data Link)</li>
+            <li><strong>Size:</strong> 48 bits</li>
+            <li><strong>Format:</strong> 00:1A:2B:3C:4D:5E</li>
+            <li><strong>Purpose:</strong> Identify device on LOCAL LAN</li>
+            <li><strong>Routing:</strong> Switches use it to forward frames</li>
+            <li><strong>Scope:</strong> Local (only on same LAN)</li>
+            <li><strong>Assignment:</strong> Manufacturer-assigned (burned-in)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Analogy</h3>
+      <p>
+        Think of it like <strong>shipping a package</strong>:
+      </p>
+      <ul>
+        <li><strong>IP Address:</strong> The full street address (tells you which country/city/street) → For routers across the internet</li>
+        <li><strong>MAC Address:</strong> The apartment number on the building door (only matters once you're on that street) → For switches on the same LAN</li>
+      </ul>
+
+      <h3>IP Address Classes</h3>
+      <ul>
+        <li><strong>Class A:</strong> 1.0.0.0 - 126.255.255.255 (used for large networks)</li>
+        <li><strong>Class B:</strong> 128.0.0.0 - 191.255.255.255 (used for medium networks)</li>
+        <li><strong>Class C:</strong> 192.0.0.0 - 223.255.255.255 (used for small networks/home)</li>
+        <li><strong>Class D:</strong> 224.0.0.0 - 239.255.255.255 (Multicast)</li>
+        <li><strong>Class E:</strong> 240.0.0.0 - 255.255.255.255 (Reserved)</li>
+      </ul>
+
+      <h3>Private IP Ranges</h3>
+      <ul>
+        <li><strong>10.0.0.0 - 10.255.255.255</strong> (Class A private)</li>
+        <li><strong>172.16.0.0 - 172.31.255.255</strong> (Class B private)</li>
+        <li><strong>192.168.0.0 - 192.168.255.255</strong> (Class C private)</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>💡 Quick Note:</strong>
+        <p>
+          Private IPs are used inside your home/company and don't route on the internet. NAT converts private IPs to public IPs for internet access.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="protocols">
+    <div class="section-heading">
+      <h2>🔹 Key Protocols: DHCP, DNS, ARP</h2>
+      <p>Essential protocols that make networking possible</p>
+    </div>
+
+    <div class="content-box">
+      <h3>DHCP (Dynamic Host Configuration Protocol)</h3>
+      <p>
+        Automatically assigns IP addresses to devices on a network. When you connect your phone to WiFi, DHCP gives it an IP.
+      </p>
+      <ul>
+        <li><strong>Purpose:</strong> Automatically assign IP addresses</li>
+        <li><strong>Port:</strong> UDP 67 (server), UDP 68 (client)</li>
+        <li><strong>Process:</strong> DISCOVER → OFFER → REQUEST → ACK</li>
+        <li><strong>Lease Time:</strong> IP is temporary (e.g., 24 hours), then renewed</li>
+      </ul>
+
+      <h4>DHCP Process Example</h4>
+      <div class="diagram">
+Device: "Hello, I need an IP!" (DISCOVER)
+        ↓
+DHCP Server: "Here's 192.168.1.100, it's valid for 24 hours" (OFFER)
+        ↓
+Device: "I'll take 192.168.1.100!" (REQUEST)
+        ↓
+DHCP Server: "Confirmed!" (ACK)
+      </div>
+
+      <h3>DNS (Domain Name System)</h3>
+      <p>
+        Converts human-readable domain names (like google.com) to IP addresses (142.250.185.46).
+      </p>
+      <ul>
+        <li><strong>Purpose:</strong> Translate domain names to IP addresses</li>
+        <li><strong>Port:</strong> UDP 53</li>
+        <li><strong>Record Types:</strong> A (IPv4), AAAA (IPv6), CNAME (alias), MX (mail), NS (nameserver), TXT, PTR</li>
+      </ul>
+
+      <h4>DNS Query Process</h4>
+      <div class="diagram">
+User types: google.com
+        ↓
+Device DNS Cache: Already cached? Return IP
+        ↓
+If not cached, ask DNS Resolver (ISP's DNS server)
+        ↓
+DNS Resolver asks Root Nameserver: "Who has google.com?"
+        ↓
+Root: "Ask the .com TLD server"
+        ↓
+TLD Server: "Ask google.com's nameserver"
+        ↓
+google.com Nameserver: "It's 142.250.185.46"
+        ↓
+IP returned to device, browser connects
+      </div>
+
+      <h3>ARP (Address Resolution Protocol)</h3>
+      <p>
+        Finds the MAC address of a device when you only know its IP address. Essential for communication on the same network.
+      </p>
+      <ul>
+        <li><strong>Purpose:</strong> Map IP addresses to MAC addresses on the same LAN</li>
+        <li><strong>Protocol:</strong> Broadcasts "Who has this IP?"</li>
+        <li><strong>Layer:</strong> Layer 2-3 (works at Data Link and Network layers)</li>
+      </ul>
+
+      <h4>ARP Process Example</h4>
+      <div class="diagram">
+Device A needs to send to Device B on same LAN.
+Device A only knows B's IP (192.168.1.50)
+        ↓
+Device A broadcasts: "Who has 192.168.1.50? Tell me your MAC!"
+        ↓
+Device B responds: "I have 192.168.1.50, my MAC is 00:11:22:33:44:55"
+        ↓
+Device A sends data to 00:11:22:33:44:55
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 Key Concept:</strong>
+        <p>
+          IP addresses route traffic BETWEEN networks (Layer 3). MAC addresses route traffic WITHIN a network (Layer 2). 
+          ARP bridges the gap by translating IP to MAC on the same LAN.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="web-flow">
+    <div class="section-heading">
+      <h2>🔹 How Websites Work (Complete Flow)</h2>
+      <p>What happens when you type a URL</p>
+    </div>
+
+    <div class="content-box">
+      <h3>Step-by-Step: User Types "google.com"</h3>
+
+      <h4>1. DNS Resolution</h4>
+      <ul>
+        <li>Browser asks: "What's the IP for google.com?"</li>
+        <li>DNS system responds: "142.250.185.46"</li>
+      </ul>
+
+      <h4>2. TCP Three-Way Handshake</h4>
+      <div class="diagram">
+Client (Your PC):  SYN → (Request to connect)
+                        ↓
+Server (Google):   SYN-ACK ← (Acknowledges, sends back SYN)
+                        ↓
+Client:            ACK → (Acknowledges server's SYN)
+                        ↓
+Connection established! Data can be sent
+      </div>
+
+      <h4>3. TLS Handshake (HTTPS)</h4>
+      <ul>
+        <li>Client and server negotiate encryption</li>
+        <li>Exchange certificates and encryption keys</li>
+        <li>Secure connection established</li>
+      </ul>
+
+      <h4>4. HTTP Request</h4>
+      <p>Browser sends HTTP request:</p>
+      <div class="diagram">
+GET / HTTP/1.1
+Host: google.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+Connection: keep-alive
+      </div>
+
+      <h4>5. Server Processing</h4>
+      <ul>
+        <li>Google server receives request</li>
+        <li>Processes and generates HTML response</li>
+        <li>Sends back HTTP 200 OK with HTML content</li>
+      </ul>
+
+      <h4>6. Browser Rendering</h4>
+      <ul>
+        <li>Browser receives HTML</li>
+        <li>Parses HTML, CSS, JavaScript</li>
+        <li>Makes additional requests for images, stylesheets, scripts</li>
+        <li>Renders page on your screen</li>
+      </ul>
+
+      <h4>7. Connection Close</h4>
+      <p>After transfer, TCP connection closes (graceful close or timeout)</p>
+
+      <div class="highlight">
+        <p>💡 <strong>Timeline:</strong> Typically takes 1-3 seconds from typing URL to seeing the page!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="nat">
+    <div class="section-heading">
+      <h2>🔹 NAT (Network Address Translation)</h2>
+      <p>How private networks connect to the internet</p>
+    </div>
+
+    <div class="content-box">
+      <h3>What is NAT?</h3>
+      <p>
+        <strong>NAT</strong> translates private IP addresses (used inside your network) to public IP addresses (used on the internet).
+        It's like a translator between your home network and the rest of the internet.
+      </p>
+
+      <h3>Why NAT?</h3>
+      <ul>
+        <li>Saves public IP addresses (only your router needs one)</li>
+        <li>Adds security (hides internal devices from internet)</li>
+        <li>Allows multiple devices to share one internet connection</li>
+      </ul>
+
+      <h3>How NAT Works</h3>
+      <div class="diagram">
+Your Device (192.168.1.5):
+  Sends packet to Google with:
+  - Source: 192.168.1.5:55000
+  - Destination: 142.250.185.46:443
+
+        ↓ (Router applies NAT)
+
+Internet sees:
+  - Source: 203.0.113.45:7582 (Your Router's Public IP)
+  - Destination: 142.250.185.46:443
+
+        ↓ (Google responds)
+
+Router receives response from Google:
+  - Source: 142.250.185.46:443
+  - Destination: 203.0.113.45:7582
+
+        ↓ (Router reverses NAT)
+
+Your Device receives:
+  - Source: 142.250.185.46:443
+  - Destination: 192.168.1.5:55000
+      </div>
+
+      <h3>Types of NAT</h3>
+      <ul>
+        <li><strong>Static NAT:</strong> One private IP maps to one public IP (rarely used)</li>
+        <li><strong>Dynamic NAT:</strong> Private IPs map to a pool of public IPs</li>
+        <li><strong>PAT (Port Address Translation):</strong> Multiple private IPs share one public IP using different ports (most common, your home router uses this)</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>💡 Real-world example:</strong>
+        <p>
+          Your home has 5 devices, but your ISP only gives you 1 public IP. Your router uses PAT so all 5 devices 
+          can access the internet through that 1 public IP using different ports.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tcp-udp">
+    <div class="section-heading">
+      <h2>🔹 TCP vs UDP</h2>
+      <p>Two transport layer protocols with different guarantees</p>
+    </div>
+
+    <div class="content-box">
+      <div class="table-responsive">
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>TCP (Transmission Control Protocol)</th>
+            <th>UDP (User Datagram Protocol)</th>
+          </tr>
+          <tr>
+            <td><strong>Connection</strong></td>
+            <td>Connection-oriented (3-way handshake)</td>
+            <td>Connectionless (fires and forgets)</td>
+          </tr>
+          <tr>
+            <td><strong>Reliability</strong></td>
+            <td>Reliable (all data arrives in order)</td>
+            <td>Unreliable (no guarantee)</td>
+          </tr>
+          <tr>
+            <td><strong>Speed</strong></td>
+            <td>Slower (checks confirm delivery)</td>
+            <td>Faster (no confirmation)</td>
+          </tr>
+          <tr>
+            <td><strong>Error Checking</strong></td>
+            <td>Extensive error checking</td>
+            <td>Basic error checking</td>
+          </tr>
+          <tr>
+            <td><strong>Ordering</strong></td>
+            <td>In-order delivery guaranteed</td>
+            <td>No ordering guarantee</td>
+          </tr>
+          <tr>
+            <td><strong>Use Cases</strong></td>
+            <td>Email, FTP, HTTP, SSH, Telnet</td>
+            <td>Video streaming, VoIP, Online gaming, DNS</td>
+          </tr>
+          <tr>
+            <td><strong>Header Size</strong></td>
+            <td>20 bytes (min)</td>
+            <td>8 bytes (smaller)</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>TCP Three-Way Handshake (SYN, SYN-ACK, ACK)</h3>
+      <p>Establishes a connection before sending data</p>
+      <div class="diagram">
+Client → Server: SYN (seq=x)
+        "I want to connect, my sequence starts at x"
+
+Client ← Server: SYN-ACK (seq=y, ack=x+1)
+        "OK, I accept. My sequence starts at y, confirm x"
+
+Client → Server: ACK (seq=x+1, ack=y+1)
+        "Confirmed!"
+
+Connection established, now send data
+      </div>
+
+      <h3>UDP Simple Flow</h3>
+      <p>Just sends data without any connection setup</p>
+      <div class="diagram">
+Client → Server: Here's packet #1 (no waiting for response)
+Client → Server: Here's packet #2 (no waiting for response)
+Client → Server: Here's packet #3 (no waiting for response)
+
+Server receives some packets, loses some in transit, doesn't matter
+      </div>
+
+      <h3>When to Use What?</h3>
+      <ul>
+        <li><strong>Use TCP:</strong> When data accuracy matters (email, file downloads, web pages)</li>
+        <li><strong>Use UDP:</strong> When speed matters more than perfection (live video, VoIP, gaming)</li>
+      </ul>
+
+      <div class="interview-qa">
+        <strong>Interview Q: "Why would you use UDP if it's unreliable?"</strong>
+        <p>
+          Answer: Because speed matters in real-time applications. A video call doesn't need every single frame perfectly; 
+          if one frame is lost, you skip it and move on. But email can't afford to lose a single character. TCP ensures reliability; UDP optimizes speed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tls">
+    <div class="section-heading">
+      <h2>🔹 TLS/SSL (Secure Communication)</h2>
+      <p>How HTTPS keeps your data encrypted</p>
+    </div>
+
+    <div class="content-box">
+      <h3>What is TLS?</h3>
+      <p>
+        <strong>TLS (Transport Layer Security)</strong> is the protocol that encrypts communication between your browser and a website.
+        SSL is the older version; TLS is the newer, more secure version. But people still say "SSL" casually.
+      </p>
+
+      <h3>Why HTTPS?</h3>
+      <ul>
+        <li>Encrypts data so no one can read it in transit (HTTP doesn't encrypt)</li>
+        <li>Authenticates the server (confirms you're talking to the real website)</li>
+        <li>Protects sensitive data like passwords, credit cards, personal info</li>
+      </ul>
+
+      <h3>How TLS Handshake Works</h3>
+      <div class="diagram">
+1. Client Hello
+   Browser: "I want to connect securely. Here are my encryption options."
+
+2. Server Hello
+   Server: "I choose this encryption. Here's my certificate."
+
+3. Certificate Exchange
+   Server sends its SSL certificate (proves it's the real google.com)
+
+4. Key Exchange
+   Browser and Server negotiate a shared encryption key
+
+5. Finished
+   Both verify encryption is working, connection is now encrypted
+
+All data sent after this is encrypted
+      </div>
+
+      <h3>Certificate (What's Inside?)</h3>
+      <ul>
+        <li><strong>Domain Name:</strong> Confirms this certificate is for google.com</li>
+        <li><strong>Public Key:</strong> Used to encrypt data</li>
+        <li><strong>Issuer:</strong> Which Certificate Authority issued it (Verisign, Let's Encrypt, etc.)</li>
+        <li><strong>Expiration:</strong> Certificates expire and need renewal</li>
+        <li><strong>Digital Signature:</strong> Proves it's authentic</li>
+      </ul>
+
+      <h3>Encryption Process</h3>
+      <ul>
+        <li><strong>Public Key Encryption:</strong> Public key encrypts, private key decrypts (asymmetric)</li>
+        <li><strong>Symmetric Encryption:</strong> Same key encrypts and decrypts (symmetric, faster)</li>
+        <li><strong>TLS Process:</strong> Uses public key encryption to share a secret symmetric key, then uses symmetric encryption for all data</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>💡 Padlock Icon:</strong>
+        <p>
+          In your browser, the padlock icon indicates an HTTPS connection with a valid certificate. 
+          Always look for it when entering passwords or payment info!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="interview">
+    <div class="section-heading">
+      <h2>🔹 Interview Questions & Answers</h2>
+      <p>Real interview questions with professional answers</p>
+    </div>
+
+    <div class="content-box">
+      <div class="interview-qa">
+        <strong>Q: Explain the difference between a packet and a frame.</strong>
+        <p>
+          A: A frame is a Layer 2 (Data Link) unit that includes MAC addresses and is used for local network communication. 
+          A packet is a Layer 3 (Network) unit that includes IP addresses for inter-network routing. Essentially, 
+          a packet gets wrapped in a frame when transmitted on a physical link. A frame contains a packet inside it.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: What is encapsulation and why is it important?</strong>
+        <p>
+          A: Encapsulation is the process of wrapping data with protocol headers as it moves down the OSI layers. 
+          Each layer adds its own header with relevant information (TCP/UDP header at Layer 4, IP header at Layer 3, MAC header at Layer 2). 
+          This is important because it allows each layer to add its own logic and security without affecting other layers. 
+          It modularizes the networking stack.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: What are the main differences between OSI and TCP/IP models?</strong>
+        <p>
+          A: The OSI model has 7 layers and is more theoretical, while the TCP/IP model has 4 layers and is practical. 
+          OSI separates Presentation and Session from Application, but TCP/IP combines them. 
+          OSI is great for teaching concepts; TCP/IP is what the actual internet uses. In interviews, know both, 
+          but TCP/IP is more relevant for actual networking jobs.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: When would you use TCP vs UDP? Give examples.</strong>
+        <p>
+          A: Use TCP when data accuracy is critical: email (SMTP), web browsing (HTTP), file transfer (FTP), remote login (SSH). 
+          Use UDP when speed matters more than perfection: video streaming (YouTube), VoIP (Skype), online gaming, DNS queries. 
+          A good analogy: TCP is like sending a registered letter (tracked, guaranteed); UDP is like shouting across the room (fast, but you might miss some words).
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: Explain what happens from when you type "google.com" to seeing the page.</strong>
+        <p>
+          A: (1) Browser checks cache; if not cached, it queries DNS to resolve google.com to its IP. (2) Browser initiates TCP three-way handshake with Google's server. 
+          (3) If HTTPS, TLS handshake establishes encryption. (4) Browser sends HTTP GET request for google.com. (5) Server processes request and sends back HTML response. 
+          (6) Browser parses HTML and makes additional requests for CSS, JavaScript, and images. (7) Browser renders the page. (8) Connection closes or is kept alive for keep-alive.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: What is the purpose of NAT?</strong>
+        <p>
+          A: NAT (Network Address Translation) translates private IP addresses to public IP addresses, allowing multiple internal devices 
+          to share one public IP when connecting to the internet. Benefits: (1) Conserves public IP addresses, (2) Adds security by hiding internal network structure, 
+          (3) Enables any number of internal devices to access the internet with just one public IP. Your home router does this automatically.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: What is the difference between MAC and IP addresses?</strong>
+        <p>
+          A: MAC addresses work at Layer 2 for local network delivery (same LAN); IP addresses work at Layer 3 for routing across networks (internet). 
+          MAC is 48 bits (00:1A:2B:3C:4D:5E format), burned in by the manufacturer; IP is 32 bits (192.168.1.1 format), assigned dynamically. 
+          When you send data, the IP address gets you to the right network, and the MAC address delivers it to the right device on that network.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: How does DHCP work? Walk me through the process.</strong>
+        <p>
+          A: (1) Device broadcasts DHCP DISCOVER: "I need an IP!" (2) DHCP server responds with DHCP OFFER: "Try 192.168.1.100, valid for 24 hours." 
+          (3) Device sends DHCP REQUEST: "I accept 192.168.1.100." (4) Server responds with DHCP ACK: "Confirmed." 
+          The device now has an IP for 24 hours. Before expiration, it can renew to extend the lease.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: Explain DNS and its role in web communication.</strong>
+        <p>
+          A: DNS (Domain Name System) translates human-readable domain names (google.com) into IP addresses (142.250.185.46). 
+          When you type a URL, your browser queries a DNS resolver. The resolver asks DNS nameservers, which eventually return the IP. 
+          Your browser then connects to that IP. Common record types: A (IPv4 address), AAAA (IPv6 address), CNAME (alias), MX (mail server), NS (nameserver).
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: What is ARP? When is it used?</strong>
+        <p>
+          A: ARP (Address Resolution Protocol) maps IP addresses to MAC addresses on the same local network. 
+          When a device knows another device's IP but not its MAC, it broadcasts: "Who has this IP? Tell me your MAC!" 
+          The device with that IP responds with its MAC address. ARP is essential because switches use MAC addresses to forward frames on the LAN, 
+          so once you know the IP, you need to find the corresponding MAC to actually deliver the frame.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: What is TLS/SSL and why is it important?</strong>
+        <p>
+          A: TLS is the protocol that encrypts communication over HTTPS. It ensures (1) Confidentiality: data is encrypted so eavesdroppers can't read it, 
+          (2) Integrity: data can't be modified in transit, (3) Authentication: you confirm you're talking to the real server (via certificates). 
+          The TLS handshake exchanges keys and negotiates encryption before any data is sent. This is why banking and shopping sites use HTTPS.
+        </p>
+      </div>
+
+      <div class="interview-qa">
+        <strong>Q: Describe the TCP three-way handshake.</strong>
+        <p>
+          A: (1) SYN: Client sends SYN packet with sequence number x: "I want to connect." (2) SYN-ACK: Server responds with SYN packet (seq=y) and ACK (ack=x+1): 
+          "I accept, and I confirm your sequence." (3) ACK: Client sends ACK (ack=y+1): "Confirmed, I got your sequence." 
+          After this, the connection is established and data can be sent reliably. This handshake ensures both sides are ready to communicate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Study Tips</h2>
+    </div>
+
+    <div class="content-box">
+      <ul>
+        <li><strong>Draw diagrams:</strong> Visualize the OSI model, packet structure, TCP handshake</li>
+        <li><strong>Practice Wireshark:</strong> Capture real traffic and analyze packets to see these concepts live</li>
+        <li><strong>Use mnemonics:</strong> Remember OSI layers with "All People Seem To Need Data Processing"</li>
+        <li><strong>Test scenarios:</strong> Ask yourself "What happens if DNS fails?" or "Why does my network only show private IPs?"</li>
+        <li><strong>Connect to projects:</strong> Build a simple packet sniffer or port scanner to see networking in action</li>
+        <li><strong>Answer interview questions:</strong> Practice explaining these concepts out loud to get comfortable</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Kaushal Kumar | Kaushal Logs | Last Updated: 2026</p>
+  </footer>
+
+</body>
+</html>
